@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface GuideDao {
 	
+	
+	
 	public void save(Guide g);
 	
 	public void update(Guide g);
