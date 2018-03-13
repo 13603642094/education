@@ -9,7 +9,28 @@
   <artifactId>education</artifactId>
   
   <packaging>war</packaging>
-  
+	<!-- start： 方便部署tomcat的插件 使用wagon:upload-singe 插件可以直接将war部署到服务器上-->
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.8</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>wagon-maven-plugin</artifactId>
+				<version>1.0</version>
+				<configuration>
+					<fromFile>target/education.war</fromFile>
+					<url>scp://foroa:qwer1234@47.94.169.235/home/foroa/soft/apache-tomcat-7.0.78/webapps/</url>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!--end:方便部署tomcat的插件 使用wagon:upload-singe 插件可以直接将war部署到服务器上-->
   		<dependencies>
 			<!-- 时间操作组件 -->
 			<dependency>
